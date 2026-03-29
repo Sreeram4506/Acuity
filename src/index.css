@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f4f7ff;
+  --surface: rgba(8, 15, 35, 0.06);
+  --surface-strong: rgba(8, 15, 35, 0.1);
+  --text: #0b1736;
+  --muted: #47567a;
+  --saffron: #d97706;
+  --teal: #0f766e;
+  --blue: #2563eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.bg-animated {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(245, 158, 11, 0.18), transparent 28%),
+    radial-gradient(circle at 80% 5%, rgba(20, 184, 166, 0.18), transparent 28%),
+    radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.2), transparent 32%),
+    linear-gradient(140deg, rgb(247, 249, 255), rgb(235, 241, 255));
+  background-size: 180% 180%;
+  animation: meshMove 18s ease infinite;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.18;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 2px 2px;
+  pointer-events: none;
+}
+
+.container-pad {
+  @apply mx-auto w-[92%] max-w-7xl;
+}
+
+.glass {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px);
+}
+
+.glass-strong {
+  background: var(--surface-strong);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(22px);
+}
+
+.section-gap {
+  @apply py-20 md:py-28;
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--saffron), var(--teal), var(--blue));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.shadow-premium {
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.35), 0 0 60px rgba(245, 158, 11, 0.16);
+}
+
+.float-shape {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(3px);
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes meshMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.32);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.54);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.btn-primary {
+  @apply rounded-full px-6 py-3 font-semibold text-slate-950 transition duration-300;
+  background: linear-gradient(90deg, #fbbf24, #14b8a6);
+  animation: pulseGlow 4s ease infinite;
+}
+
+.btn-secondary {
+  @apply rounded-full px-6 py-3 font-semibold transition duration-300;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  padding: 0.8rem 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(245, 158, 11, 0.8);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
