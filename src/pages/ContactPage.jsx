@@ -6,8 +6,8 @@ import { Mail, Phone, MapPin } from "lucide-react";
 export default function ContactPage() {
   return (
     <div className="min-h-screen">
-      <SectionWrapper 
-        title="Contact Us" 
+      <SectionWrapper
+        title="Contact Us"
         subtitle="Get in touch with our team for personalized solutions."
         className="pt-32"
       >
@@ -27,7 +27,7 @@ export default function ContactPage() {
                 <Phone size={15} /> +91 9573264575
               </p>
               <p className="flex items-center gap-2 text-sm text-muted">
-                <MapPin size={15} /> Madhapur, Hyderabad, Telangana, India
+                <MapPin size={15} /> LIG 237, Road No 2, near Dhana Lakshmi Center Phase 1, kPHB Colony Hyderabad, Telangana 500072
               </p>
             </motion.div>
 
