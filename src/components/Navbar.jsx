@@ -20,6 +20,18 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen]);
+
   const getLinkPath = (link) => {
     const linkMap = {
       "Services": "/services",
@@ -35,8 +47,8 @@ function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${
-        scrolled ? "glass-strong border-b border-white/10" : ""
+      className={`fixed left-0 right-0 top-0 z-[60] transition-all duration-300 ${
+        scrolled || mobileMenuOpen ? "glass-strong border-b border-white/10" : ""
       }`}
     >
       <nav className="container-pad flex items-center justify-between py-4">
@@ -130,13 +142,13 @@ function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="absolute left-0 right-0 top-full glass-strong border-b border-white/10 md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="absolute left-0 right-0 top-full bg-[#f4f7ff]/95 backdrop-blur-xl border-b border-white/20 md:hidden z-50 overflow-hidden shadow-2xl"
           >
-            <div className="container-pad py-4 overflow-y-auto max-h-[80vh]">
+            <div className="container-pad py-8 overflow-y-auto max-h-[calc(100vh-80px)]">
               <ul className="space-y-2">
                 <li className="py-2">
                   <div className="text-sm font-bold text-saffron mb-2">SERVICES</div>
