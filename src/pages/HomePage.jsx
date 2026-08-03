@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, CheckCircle2, Clock3, PhoneCall } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, PhoneCall } from "lucide-react";
 import { Link } from "react-router-dom";
 import MagneticButton from "../components/MagneticButton";
 import SectionWrapper from "../components/SectionWrapper";
@@ -9,7 +9,7 @@ import Counter from "../components/Counter";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import BlogSection from "../components/BlogSection";
 import { services, stats, testimonials, blogPosts } from "../data";
-import { UserCheck, ShieldCheck, WalletCards, Zap, Sparkles, Star } from "lucide-react";
+import { UserCheck, WalletCards, Zap, Star } from "lucide-react";
 
 const whyItems = [
   { icon: UserCheck, title: "Expert Professionals", text: "CAs, CSs, and compliance specialists." },
@@ -18,18 +18,6 @@ const whyItems = [
   { icon: Zap, title: "Fast Processing", text: "Execution-oriented workflows with SLA discipline." },
   { icon: Sparkles, title: "Dedicated Support", text: "Human support with advisory-level clarity." },
   { icon: Star, title: "Nationwide Services", text: "Serving founders and SMEs across India." },
-];
-
-const landingPagePoints = [
-  "A single, purpose-built landing page designed to position Acuity Tax Service as a credible, senior tax and compliance partner.",
-  "Sections for services offered: ITR filing, GST, compliance, audit support, advisory, trust markers, and a clear enquiry or callback pathway.",
-  "Mobile-responsive layout, fast-loading, and structured to convert a visiting business owner into a qualified enquiry.",
-];
-
-const landingPageHighlights = [
-  { icon: ShieldCheck, label: "Credible positioning" },
-  { icon: Clock3, label: "Fast-loading structure" },
-  { icon: CheckCircle2, label: "Conversion-focused" },
 ];
 
 function Hero() {
@@ -50,7 +38,7 @@ function Hero() {
           >
             <span className="gradient-text">ACUITY TAX SERVICES</span>
             <br />
-            <span className="text-3xl md:text-4xl lg:text-5xl">Business Compliance Made Simple</span>
+            <span className="text-3xl md:text-4xl lg:text-5xl">Senior Tax and Compliance Support for Growing Businesses</span>
           </motion.h1>
           <motion.p
             className="mt-5 max-w-xl text-muted"
@@ -58,7 +46,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            From registration and filings to accounting and advisory, run your operations with a single trusted partner.
+            A focused, fast-loading website built to earn trust quickly, explain services clearly, and turn business visitors into qualified enquiries.
           </motion.p>
           <motion.div
             className="mt-8 flex flex-wrap gap-3"
@@ -76,6 +64,23 @@ function Hero() {
               Explore Services <ArrowRight size={16} />
             </Link>
           </motion.div>
+          <motion.div
+            className="mt-8 grid gap-3 sm:grid-cols-3"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65 }}
+          >
+            {[
+              "ITR, GST, compliance, audit support, advisory",
+              "Clear enquiry and callback pathway",
+              "Mobile-responsive and fast-loading",
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-muted">
+                <CheckCircle2 className="mt-0.5 shrink-0 text-saffron" size={16} />
+                <span>{item}</span>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
         <motion.div
           style={{ y: cardY }}
@@ -84,24 +89,24 @@ function Hero() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="relative"
         >
-          <div className="glass-strong relative rounded-3xl p-8 shadow-2xl">
+          <div className="glass-strong relative rounded-[2rem] p-8 shadow-2xl">
             <div className="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-gradient-to-br from-amber-400 to-teal-400 opacity-20 blur-2xl" />
             <div className="absolute -bottom-4 -left-4 h-32 w-32 rounded-full bg-gradient-to-tr from-blue-400 to-saffron opacity-20 blur-2xl" />
             <div className="relative">
-              <h3 className="mb-4 text-xl font-semibold">Start Your Compliance Journey</h3>
-              <p className="mb-6 text-muted">Get expert guidance for your business needs.</p>
+              <h3 className="mb-4 text-xl font-semibold">One partner for the essentials</h3>
+              <p className="mb-6 text-muted">Simple structure, clear services, and an obvious route to enquire or request a callback.</p>
               <div className="grid gap-3 text-sm">
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-green-400" />
-                  <span>Business Registration & GST</span>
+                  <ShieldCheck className="text-saffron" size={16} />
+                  <span>Trust-first presentation</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-blue-400" />
-                  <span>Tax Filing & Compliance</span>
+                  <Sparkles className="text-teal-400" size={16} />
+                  <span>Senior tax and compliance positioning</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-amber-400" />
-                  <span>Accounting & Advisory</span>
+                  <PhoneCall className="text-blue-400" size={16} />
+                  <span>Enquiry, callback, and WhatsApp friendly</span>
                 </div>
               </div>
             </div>
@@ -112,111 +117,14 @@ function Hero() {
   );
 }
 
-function WebsiteLandingSection() {
-  return (
-    <SectionWrapper
-      id="landing-page"
-      title="A. Website Landing Page"
-      subtitle="A focused homepage section that introduces the business clearly, builds trust quickly, and gives visitors one obvious next step."
-    >
-      <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.55 }}
-          className="glass-strong rounded-[2rem] p-7 shadow-2xl md:p-10"
-        >
-          <div className="mb-6 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-saffron">
-            Built from the brief in your image
-          </div>
-
-          <div className="space-y-5">
-            {landingPagePoints.map((point) => (
-              <div key={point} className="flex gap-4">
-                <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-saffron/12 text-saffron">
-                  <span className="text-xl leading-none">-</span>
-                </div>
-                <p className="text-base leading-8 text-muted md:text-lg">{point}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            {landingPageHighlights.map((item) => (
-              <div
-                key={item.label}
-                className="flex items-center gap-3 rounded-2xl border border-white/8 bg-white/5 px-4 py-3"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-saffron/10 text-saffron">
-                  <item.icon size={18} />
-                </div>
-                <span className="text-sm font-medium text-slate-700">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.55, delay: 0.1 }}
-          className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-[#091127]/90 p-7 text-white shadow-premium md:p-10"
-        >
-          <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-saffron/20 blur-3xl" />
-          <div className="absolute -bottom-12 -left-8 h-40 w-40 rounded-full bg-teal-400/20 blur-3xl" />
-
-          <div className="relative">
-            <p className="text-sm uppercase tracking-[0.35em] text-white/55">Enquiry flow</p>
-            <h3 className="mt-3 text-2xl font-bold md:text-3xl">Turn attention into a callback</h3>
-            <p className="mt-4 max-w-md text-sm leading-7 text-white/72 md:text-base">
-              The section is designed to guide a business owner from first glance to a simple enquiry, phone call, or WhatsApp callback.
-            </p>
-
-            <div className="mt-8 space-y-3">
-              {[
-                "Clear service blocks for ITR, GST, compliance, audit support, and advisory.",
-                "Trust markers that reinforce senior expertise and reliability.",
-                "A visible enquiry path for quick response and lead capture.",
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
-                  <CheckCircle2 className="mt-0.5 shrink-0 text-amber-300" size={18} />
-                  <p className="text-sm leading-6 text-white/82">{item}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <MagneticButton className="btn-primary">
-                <Link to="/contact" className="inline-flex items-center gap-2">
-                  Enquire Now <ArrowRight size={16} />
-                </Link>
-              </MagneticButton>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
-              >
-                <PhoneCall size={16} />
-                Request Callback
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </SectionWrapper>
-  );
-}
-
 export default function HomePage() {
   const [activeService, setActiveService] = useState(null);
 
   return (
     <>
       <Hero />
-      <WebsiteLandingSection />
-      
-      <SectionWrapper id="services" title="Our Services" subtitle="Comprehensive compliance and business solutions for modern enterprises.">
+
+      <SectionWrapper id="services" title="Our Services" subtitle="Services arranged for quick scanning, trust building, and lead conversion.">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, idx) => (
             <motion.div
@@ -236,7 +144,7 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper id="why" title="Why Choose ACUITY TAX SERVICES?" subtitle="We combine technology, expertise, and customer-centric approach to deliver exceptional compliance experiences.">
+      <SectionWrapper id="why" title="Why Choose ACUITY TAX SERVICES?" subtitle="A credible, senior-facing experience designed for business owners who need clarity fast.">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {whyItems.map((item, i) => (
             <motion.div
@@ -279,11 +187,11 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper id="testimonials" title="Client Success Stories" subtitle="Real experiences from businesses we've helped transform.">
+      <SectionWrapper id="testimonials" title="Client Success Stories" subtitle="Real experiences from businesses we've helped streamline.">
         <TestimonialCarousel items={testimonials} />
       </SectionWrapper>
 
-      <SectionWrapper id="blog" title="Insights & Updates" subtitle="Stay informed with the latest compliance trends and business insights.">
+      <SectionWrapper id="blog" title="Insights & Updates" subtitle="Practical guidance for business owners, founders, and finance teams.">
         <BlogSection posts={blogPosts} />
       </SectionWrapper>
     </>

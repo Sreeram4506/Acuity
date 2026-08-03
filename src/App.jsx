@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
@@ -45,6 +46,7 @@ function App() {
         <Route path="/testimonials" element={<TestimonialsPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
+      <Footer />
       <WhatsAppButton 
         showOptions={showWhatsAppOptions}
         onToggle={() => setShowWhatsAppOptions(!showWhatsAppOptions)}
